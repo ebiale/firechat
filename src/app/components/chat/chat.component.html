@@ -1,0 +1,17 @@
+<h1>Chat</h1>
+
+<hr>
+
+<div class="app-msgs" id="app-messages">
+    <div [ngClass]="{'text-right': chatService.user.uid == chat.uid}" *ngFor="let chat of chatService.chats" class="animate fadeIn">
+        <span class="badge" [ngClass]="{'badge-primary': chatService.user.uid == chat.uid,
+        'badge-success': chatService.user.uid !== chat.uid}">
+            {{chat.name}}</span>
+        <p>{{chat.msg}}</p>
+    </div>
+
+</div>
+
+<input type="text" name="msg" [(ngModel)]="message"
+        (keyup.enter)="sendMsg()" class="form-control"
+        placeholder="Send message">
